@@ -1,0 +1,43 @@
+<div style="background-color: cyan;padding: 20px;  margin: 20px;">
+    <table>
+        <tr *ngFor="let item of profiles">
+            <td>{{item.id}}</td>
+            <td>{{item.fname}}</td>
+            <td>{{item.lname}}</td>
+            <td>{{item.email}}</td>
+            <td><button (click)="editData(item)" value="Edit"> Edit </button></td>
+            <td><button (click)="deleteData(item)" value="Edit"> Delete </button></td>
+        </tr>
+    </table>
+</div>
+
+<div style="background-color: burlywood; padding: 20px; margin: 20px;">
+
+    <form #formdata=ngForm (ngSubmit)="saveData()">
+        <div>
+            <input placeholder="Enter first name" type="text" name="firstname" #fname=ngModel id="fname" [(ngModel)]="formData.fname" required minlength=3>
+            <div *ngIf="fname.touched && fname.invalid">
+                <div *ngIf="fname.errors.required">
+                    Name is required.
+                </div>
+                <div *ngIf="fname.errors.minlength">
+                    Name must
+                </div>
+            </div>
+        </div>
+        <div>
+            <input placeholder="Enter last name" type="text" name="lastname" id="lname" [(ngModel)]="formData.lname">
+        </div>
+        <div>
+            <input placeholder="Enter email" type="email" name="email" id="email" [(ngModel)]="formData.email" required>
+        </div>
+        <div *ngIf="formData.id==null">
+            <input [disabled]="formdata.invalid" type="submit" value="Save">
+        </div>
+        <div *ngIf="formData.id!=null">
+            <input [disabled]="formdata.invalid" type="submit" value="Update">
+        </div>
+
+    </form>
+
+</div>

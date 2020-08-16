@@ -1,0 +1,17 @@
+.head {
+    background-color: gray;
+    margin: 20px;
+    padding: 20px;
+}
+
+.main {
+    background-color: white;
+    margin: 20px;
+    padding: 20px;
+}
+
+.footer {
+    background-color: beige;
+    margin: 20px;
+    padding: 20px;
+}
